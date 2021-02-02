@@ -5,7 +5,7 @@ import { connectDatabase } from "./models";
 const app = express();
 connectDatabase();
 
-const PORT = 5000 || process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 app.get("/", (req, res) => {
   res.send("OK");
