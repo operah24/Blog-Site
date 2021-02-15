@@ -1,7 +1,7 @@
 import { verify } from "jsonwebtoken";
 import { User } from "../models";
 
-const isUser = async (req, res) => {
+const isUser = async (req, res, next) => {
   const token = req.headers.authorization;
   if (!token) {
     return res.status(401).json({
@@ -9,8 +9,9 @@ const isUser = async (req, res) => {
       message: "Access denied, no token!",
     });
   }
-  const { id } = verify(token, "ESTHER");
+
   try {
+    const { id } = verify(token, "ESTHER");
     const user = await User.findById(id);
     if (user) {
       req.user = user;

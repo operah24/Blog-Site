@@ -8,8 +8,8 @@ import {
 } from "../middleware/validators";
 const router = new express.Router();
 
-router.post("/register", registerUser, validateRegister);
-router.post("/login", login, validateLogin);
+router.post("/register", validateRegister, registerUser);
+router.post("/login", validateLogin, login);
 router.get("/me", isUser, getUser);
 router.get("/opeyemi", isUser, getUser);
 
