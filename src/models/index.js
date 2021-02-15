@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
-
+import User from "./user";
+import Post from "./post";
 const connectDatabase = async () => {
   const url = process.env.MY_DATABASE_URL;
   try {
@@ -15,4 +16,4 @@ const connectDatabase = async () => {
   }
 };
 
-export { connectDatabase };
+export { connectDatabase, User, Post };
