@@ -43,6 +43,7 @@ const validateComment = (req, res, next) => {
       message: error.details[0].message,
     });
   }
+  return next();
 };
 export {
   validateRegister,
