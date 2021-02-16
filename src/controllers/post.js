@@ -46,10 +46,10 @@ const getPosts = async (req, res) => {
 
 const getPostsById = async (req, res) => {
   try {
-    const post = await Post.findById(req.params.id).populate(
-      "author",
-      "name"
-    );
+    const post = await Post.findById(req.params.id).populate({
+      path: "author comments",
+      select: ["-password", "-posts"],
+    });
     if (!post) {
       return res.status(404).json({
         message: "Post not found!",

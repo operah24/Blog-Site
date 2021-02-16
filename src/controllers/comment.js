@@ -13,7 +13,7 @@ const addComment = async (req, res) => {
     await Post.findByIdAndUpdate(
       { _id: postId },
       {
-        $addToSet: { comment },
+        $addToSet: { comments: comment._id },
       },
       { useFindAndModify: false }
     );
